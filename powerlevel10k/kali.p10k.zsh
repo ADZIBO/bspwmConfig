@@ -204,9 +204,9 @@
   ##########################################################################################################
 
   # Current directory background color.
-  typeset -g POWERLEVEL9K_DIR_BACKGROUND=93
+  typeset -g POWERLEVEL9K_DIR_BACKGROUND=57
   # Default current directory foreground color.
-  typeset -g POWERLEVEL9K_DIR_FOREGROUND=254
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=255
   # If directory is too long, shorten some of its segments to the shortest possible unique
   # prefix. The shortened directory can be tab-completed to the original.
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
@@ -514,37 +514,37 @@
   # it will signify success by turning green.
   typeset -g POWERLEVEL9K_STATUS_OK=true
   typeset -g POWERLEVEL9K_STATUS_OK_VISUAL_IDENTIFIER_EXPANSION='✔'
-  typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND=2
-  typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND=0
+  typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND=255
+  typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND=232
 
   # Status when some part of a pipe command fails but the overall exit status is zero. It may look
   # like this: 1|0.
   typeset -g POWERLEVEL9K_STATUS_OK_PIPE=true
   typeset -g POWERLEVEL9K_STATUS_OK_PIPE_VISUAL_IDENTIFIER_EXPANSION='✔'
-  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_FOREGROUND=2
-  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_BACKGROUND=0
+  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_FOREGROUND=255
+  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_BACKGROUND=232
 
   # Status when it's just an error code (e.g., '1'). No need to show it if prompt_char is enabled as
   # it will signify error by turning red.
   typeset -g POWERLEVEL9K_STATUS_ERROR=true
   typeset -g POWERLEVEL9K_STATUS_ERROR_VISUAL_IDENTIFIER_EXPANSION='✘'
-  typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=232
-  typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND=196
+  typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=255
+  typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND=88
 
   # Status when the last command was terminated by a signal.
   typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL=true
   # Use terse signal names: "INT" instead of "SIGINT(2)".
   typeset -g POWERLEVEL9K_STATUS_VERBOSE_SIGNAME=false
   typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_VISUAL_IDENTIFIER_EXPANSION='✘'
-  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_FOREGROUND=232
-  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_BACKGROUND=196
+  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_FOREGROUND=255
+  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_BACKGROUND=88
 
   # Status when some part of a pipe command fails and the overall exit status is also non-zero.
   # It may look like this: 1|0.
   typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE=true
   typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_VISUAL_IDENTIFIER_EXPANSION='✘'
-  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_FOREGROUND=232
-  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_BACKGROUND=196
+  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_FOREGROUND=255
+  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_BACKGROUND=88
 
   
   ##########################################################################################################
@@ -553,7 +553,7 @@
   
   # Execution time color.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=255
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=105
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=232
   # Show duration of the last command if takes at least this many seconds.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=3
   # Show this many fractional digits. Zero means round to seconds.
@@ -968,7 +968,9 @@
   # typeset -g POWERLEVEL9K_PER_DIRECTORY_HISTORY_LOCAL_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_PER_DIRECTORY_HISTORY_GLOBAL_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
+
   ################################[ cpu_arch: CPU architecture ]################################
+
   # CPU architecture color.
   typeset -g POWERLEVEL9K_CPU_ARCH_FOREGROUND=0
   typeset -g POWERLEVEL9K_CPU_ARCH_BACKGROUND=3
@@ -980,10 +982,14 @@
   # Custom icon.
   # typeset -g POWERLEVEL9K_CPU_ARCH_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
-  ##################################[ context: user@hostname ]##################################
+
+  ##########################################################################################################
+  ##################################[ context: user@hostname | By adzibo ]##################################
+  ##########################################################################################################
+
   # Context color when running with privileges.
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=208
-  typeset -g POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND=0
+  typeset -g POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND=232
   # Context color in SSH without privileges.
   typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_FOREGROUND=3
   typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_BACKGROUND=0
@@ -992,14 +998,12 @@
   typeset -g POWERLEVEL9K_CONTEXT_BACKGROUND=0
 
   # Context format when running with privileges: user@hostname.
-  
-  # ZIBERSEC MODIFIED
-  # --------------------------------------------------------------------------------------------
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE=''
-  # typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%n@%m'
 
+  # typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%n@%m'
   # Context format when in SSH without privileges: user@hostname.
   typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE='%n@%m'
+
   # Default context format (no privileges, no SSH): user@hostname.
   typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%n@%m'
 
@@ -1012,21 +1016,33 @@
   # Custom prefix.
   # typeset -g POWERLEVEL9K_CONTEXT_PREFIX='with '
 
-  ###[ virtualenv: python virtual environment (https://docs.python.org/3/library/venv.html) ]###
+
+  ##########################################################################################################
+  ###[ virtualenv: python virtual environment (https://docs.python.org/3/library/venv.html | By adzibo) ]###
+  ##########################################################################################################
+
   # Python virtual environment color.
-  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=0
-  typeset -g POWERLEVEL9K_VIRTUALENV_BACKGROUND=4
+  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=232
+  typeset -g POWERLEVEL9K_VIRTUALENV_BACKGROUND=220
+
   # Don't show Python version next to the virtual environment name.
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=false
+
   # If set to "false", won't show virtualenv if pyenv is already shown.
   # If set to "if-different", won't show virtualenv if it's the same as pyenv.
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_WITH_PYENV=false
+
   # Separate environment name from Python version only with a space.
   typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
+
   # Custom icon.
   # typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
-  #####################[ anaconda: conda environment (https://conda.io/) ]######################
+
+  ##########################################################################################################
+  #####################[ anaconda: conda environment (https://conda.io/) | By adzibo ]######################
+  ##########################################################################################################
+
   # Anaconda environment color.
   typeset -g POWERLEVEL9K_ANACONDA_FOREGROUND=0
   typeset -g POWERLEVEL9K_ANACONDA_BACKGROUND=4
